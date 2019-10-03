@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Simulation Class &mdash; NP Monolayer Monte Carlo 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Move Class" href="move_class.html" />
+    <link rel="prev" title="Undocumented Python objects" href="coverage.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> NP Monolayer Monte Carlo
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="inheritance.html">Plot of Module Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverage.html">Undocumented Python objects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coverage.html#atom-class">atom_class</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Simulation Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="move_class.html">Move Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="molecule_class.html">Molecule Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atom_class.html">Atom Class</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">NP Monolayer Monte Carlo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Simulation Class</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/simulation_class.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-simulation_class">
+<span id="simulation-class"></span><h1>Simulation Class<a class="headerlink" href="#module-simulation_class" title="Permalink to this headline">¶</a></h1>
+<p>This module contains the simulation class and associated functions which are meant to encapsulate a LAMMPS simulation.</p>
+<dl class="class">
+<dt id="simulation_class.Simulation">
+<em class="property">class </em><code class="descclassname">simulation_class.</code><code class="descname">Simulation</code><span class="sig-paren">(</span><em>init_file</em>, <em>datafile</em>, <em>dumpfile</em>, <em>temp</em>, <em>max_disp=1.0</em>, <em>type_lengths=(5</em>, <em>13)</em>, <em>numtrials=5</em>, <em>anchortype=2</em>, <em>restart=False</em>, <em>parallel=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class encapsulates a LAMMPS simulation including its associated molecules and computes and fixes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>init_file</strong> (<em>str</em>) – The file name of the initialization LAMMPS file. This file contains all the force field parameters computes and fixes that one wishes to specify for the LAMMPS simulation.</p></li>
+<li><p><strong>datafile</strong> (<em>str</em>) – The LAMMPS data file which contains the coordinates of the atoms and bond, angle, and dihedral information.</p></li>
+<li><p><strong>dumpfile</strong> (<em>str</em>) – The filename of the file which one wishes to dump the XYZ information of the simulation.</p></li>
+<li><p><strong>temp</strong> (<em>float</em>) – The temperature which one wishes to run the simulation.</p></li>
+<li><p><strong>exclude</strong> (<em>binary</em>) – A binary value that determines whether any interactions are excluded in the simulation.</p></li>
+<li><p><strong>numtrials</strong> (<em>int</em>) – The number of trial rotations for each regrowth step in the configurationally biased moves</p></li>
+<li><p><strong>restart</strong> (<em>binary</em>) – A binary value that determines whether this is a new simulation or a restart of a previous simulation.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="simulation_class.Simulation.assignAtomTypes">
+<code class="descname">assignAtomTypes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.assignAtomTypes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.assignAtomTypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assign element names to the atom types in the simulation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="simulation_class.Simulation.dump_atoms">
+<code class="descname">dump_atoms</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.dump_atoms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.dump_atoms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump the atom XYZ info to the dumpfile specified in the Simulation’s dumpfile variable.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="simulation_class.Simulation.dump_group">
+<code class="descname">dump_group</code><span class="sig-paren">(</span><em>group_name</em>, <em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.dump_group"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.dump_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dumps the atoms of the specified group to an XYZ file specified by filename</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>group_name</strong> (<em>str</em>) – The group ID of the group of atoms that one wishes to dump</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – The name of the file that the group of atoms will be dumped to.
+As the specified format is XYZ it is a good idea to append .xyz to the end of the filename.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="simulation_class.Simulation.getRandomMolecule">
+<code class="descname">getRandomMolecule</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.getRandomMolecule"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.getRandomMolecule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a randomly selected molecule from the LAMMPS datafile associated with the given instance.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="simulation_class.Simulation.get_atom_coords">
+<code class="descname">get_atom_coords</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.get_atom_coords"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.get_atom_coords" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns positions of each atom in a Nx3 array</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>atom_coords</strong> – A Nx3 array with each row representing an atom and the columns containing the x, ym and z coordinates in that order.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="simulation_class.Simulation.initializeComputes">
+<code class="descname">initializeComputes</code><span class="sig-paren">(</span><em>lmp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.initializeComputes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.initializeComputes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes the LAMMPS computes that one  wishes to use in the simulation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="simulation_class.Simulation.initializeFixes">
+<code class="descname">initializeFixes</code><span class="sig-paren">(</span><em>lmp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.initializeFixes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.initializeFixes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes the fixes one wishes to use in the simulation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="simulation_class.Simulation.initializeGroups">
+<code class="descname">initializeGroups</code><span class="sig-paren">(</span><em>lmp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.initializeGroups"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.initializeGroups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the LAMMPS groups that one wishes to use in the simulation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="simulation_class.Simulation.minimize">
+<code class="descname">minimize</code><span class="sig-paren">(</span><em>force_tol=0.001</em>, <em>e_tol=1e-05</em>, <em>max_iter=200</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.minimize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.minimize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Minimizes the system using LAMMPS minimize function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>force_tol</strong> (<em>float</em><em>, </em><em>optional</em>) – The force tolerance used in the minimization routine.</p></li>
+<li><p><strong>e_tol</strong> (<em>float</em><em>, </em><em>optional</em>) – The energy tolerance used in the minimization routine.</p></li>
+<li><p><strong>max_iter</strong> (<em>int</em><em>, </em><em>optional</em>) – The maximum allowed iterations in the minimization procedure.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="simulation_class.Simulation.turn_off_atoms">
+<code class="descname">turn_off_atoms</code><span class="sig-paren">(</span><em>atomIDs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.turn_off_atoms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.turn_off_atoms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turns off short range interactions with specified atoms using ‘neigh_modify exclude’ command in LAMMPS</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>atomIDs</strong> (<em>list of type int</em>) – A list of atom IDs of the atoms that will be turned off in the simulation</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="move_class.html" class="btn btn-neutral float-right" title="Move Class" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="coverage.html" class="btn btn-neutral float-left" title="Undocumented Python objects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Steven Merz
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

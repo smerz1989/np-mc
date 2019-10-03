@@ -20,7 +20,7 @@ import sphinx_rtd_theme
 import sphinx_bootstrap_theme
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../src'))
+sys.path.insert(0, os.path.abspath('../npmc'))
 
 
 # -- General configuration ------------------------------------------------
