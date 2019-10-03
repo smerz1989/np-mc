@@ -53,7 +53,7 @@ clean:
 .PHONY: html
 html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
-	@cp $(BUILDDIR)/html/* $(BUILDDIR)
+	@cp -r $(BUILDDIR)/html/* $(BUILDDIR)
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
