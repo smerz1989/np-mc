@@ -2,7 +2,7 @@
 #
 
 # You can set these variables from the command line.
-SPHINXOPTS    =
+SPHINXOPTS    = -D graphviz_dot=/usr/bin/dot
 SPHINXBUILD   = sphinx-build
 PAPER         =
 BUILDDIR      = ..
@@ -48,12 +48,12 @@ help:
 
 .PHONY: clean
 clean:
-	rm -rf $(BUILDDIR)/*
+	rm -rf $(BUILDDIR)/html/* $(BUILDDIR)/_static $(BUILDDIR)/_modules $(BUILDDIR)/_images $(BUILDDIR)/doctrees $(BUILDDIR)/html $(BUILDDIR)/*.html $(BUILDDIR)/*.js
 
 .PHONY: html
 html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
-	@cp -r $(BUILDDIR)/html/* $(BUILDDIR)
+	@cp -ra $(BUILDDIR)/html/* $(BUILDDIR)
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 

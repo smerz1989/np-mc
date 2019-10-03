@@ -26,7 +26,8 @@ setup(name='npmc',
             'scipy',
             'sphinx',
             'sphinx_rtd_theme',
-            'sphinx_bootstrap_theme'
+            'sphinx_bootstrap_theme',
+            'graphviz'
             ],
         include_package_data=True,
         zip_safe=False)

@@ -101,8 +101,8 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 html_logo = "logo.png"
 
 html_theme_options = {
-    'collapse_navigation': False,
     'display_version': False,
+    'navigation_depth': 2,
 }
 
 # Theme options are theme-specific and customize the look and feel of a theme
