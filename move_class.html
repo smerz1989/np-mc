@@ -55,9 +55,6 @@
           
 
           
-            
-            <img src="_static/logo.png" class="logo" alt="Logo"/>
-          
           </a>
 
           
@@ -157,7 +154,7 @@
 <span id="move-class"></span><h1>Move Class<a class="headerlink" href="#module-move_class" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="move_class.CBMCRegrowth">
-<em class="property">class </em><code class="descclassname">move_class.</code><code class="descname">CBMCRegrowth</code><span class="sig-paren">(</span><em>simulation</em>, <em>anchortype</em>, <em>numtrials=5</em>, <em>parallel=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#CBMCRegrowth"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.CBMCRegrowth" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">move_class.</code><code class="sig-name descname">CBMCRegrowth</code><span class="sig-paren">(</span><em class="sig-param">simulation</em>, <em class="sig-param">anchortype</em>, <em class="sig-param">numtrials=5</em>, <em class="sig-param">parallel=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#CBMCRegrowth"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.CBMCRegrowth" title="Permalink to this definition">¶</a></dt>
 <dd><p>A class that encapsulates a Configurationally Biased Regrowth move as outline by Siepmann et al. that inherits from the Move class.
 Here the dihedral force fields of the simulation are also passed in to ais in choosing trial positions.</p>
 <dl class="field-list simple">
@@ -173,7 +170,7 @@ Here the dihedral force fields of the simulation are also passed in to ais in ch
 </dl>
 <dl class="method">
 <dt id="move_class.CBMCRegrowth.evaluate_energies">
-<code class="descname">evaluate_energies</code><span class="sig-paren">(</span><em>molecule</em>, <em>index</em>, <em>rotations</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#CBMCRegrowth.evaluate_energies"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.CBMCRegrowth.evaluate_energies" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">evaluate_energies</code><span class="sig-paren">(</span><em class="sig-param">molecule</em>, <em class="sig-param">index</em>, <em class="sig-param">rotations</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#CBMCRegrowth.evaluate_energies"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.CBMCRegrowth.evaluate_energies" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evluates the pair energy of the system for each of the given dihedral rotations at the specified index.  For these enegies to be consistent with CBMC all atoms past the index should be turned off with turn_off_molecule_atoms.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -194,7 +191,7 @@ Here the dihedral force fields of the simulation are also passed in to ais in ch
 
 <dl class="method">
 <dt id="move_class.CBMCRegrowth.parallel_evaluate_energies">
-<code class="descname">parallel_evaluate_energies</code><span class="sig-paren">(</span><em>molecule</em>, <em>index</em>, <em>rotations</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#CBMCRegrowth.parallel_evaluate_energies"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.CBMCRegrowth.parallel_evaluate_energies" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">parallel_evaluate_energies</code><span class="sig-paren">(</span><em class="sig-param">molecule</em>, <em class="sig-param">index</em>, <em class="sig-param">rotations</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#CBMCRegrowth.parallel_evaluate_energies"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.CBMCRegrowth.parallel_evaluate_energies" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the pair potential energy of numtrials number of rotations about a the dihedral at the given molecule index and returns the result.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -215,7 +212,7 @@ Here the dihedral force fields of the simulation are also passed in to ais in ch
 
 <dl class="method">
 <dt id="move_class.CBMCRegrowth.select_dih_angles">
-<code class="descname">select_dih_angles</code><span class="sig-paren">(</span><em>dih_type</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#CBMCRegrowth.select_dih_angles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.CBMCRegrowth.select_dih_angles" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">select_dih_angles</code><span class="sig-paren">(</span><em class="sig-param">dih_type</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#CBMCRegrowth.select_dih_angles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.CBMCRegrowth.select_dih_angles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns numtrials number of dihedral angles with probability given by the PDF given by the boltzmann distribution determined by the temperature and the dihedral forcefield.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -232,7 +229,7 @@ Here the dihedral force fields of the simulation are also passed in to ais in ch
 
 <dl class="method">
 <dt id="move_class.CBMCRegrowth.select_index">
-<code class="descname">select_index</code><span class="sig-paren">(</span><em>molecule</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#CBMCRegrowth.select_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.CBMCRegrowth.select_index" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">select_index</code><span class="sig-paren">(</span><em class="sig-param">molecule</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#CBMCRegrowth.select_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.CBMCRegrowth.select_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Selects a random index of a molecule ranging from 3 to the final index.  The index selection starts at 3 as no dihedral rotation does not move any atoms with index less than 3.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -249,7 +246,7 @@ Here the dihedral force fields of the simulation are also passed in to ais in ch
 
 <dl class="method">
 <dt id="move_class.CBMCRegrowth.select_random_molecule">
-<code class="descname">select_random_molecule</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#CBMCRegrowth.select_random_molecule"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.CBMCRegrowth.select_random_molecule" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">select_random_molecule</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#CBMCRegrowth.select_random_molecule"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.CBMCRegrowth.select_random_molecule" title="Permalink to this definition">¶</a></dt>
 <dd><p>Selects a random elegible molecule (one with an anchor atom set) from the molecules provided by the Simulation object that the CBMCRegrowth object was passed in at initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -263,7 +260,7 @@ Here the dihedral force fields of the simulation are also passed in to ais in ch
 
 <dl class="method">
 <dt id="move_class.CBMCRegrowth.set_anchor_atoms">
-<code class="descname">set_anchor_atoms</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#CBMCRegrowth.set_anchor_atoms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.CBMCRegrowth.set_anchor_atoms" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_anchor_atoms</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#CBMCRegrowth.set_anchor_atoms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.CBMCRegrowth.set_anchor_atoms" title="Permalink to this definition">¶</a></dt>
 <dd><p>For every molecule in the Move’s associated simulation the anchor atom is set to the anchortype associated with the CBMCRegrowth instance.
 Any molecule that does not have an atom of type anchortype is skipped.</p>
 </dd></dl>
@@ -272,10 +269,10 @@ Any molecule that does not have an atom of type anchortype is skipped.</p>
 
 <dl class="class">
 <dt id="move_class.CBMCSwap">
-<em class="property">class </em><code class="descclassname">move_class.</code><code class="descname">CBMCSwap</code><span class="sig-paren">(</span><em>simulation</em>, <em>anchortype</em>, <em>type_lengths</em>, <em>starting_index=3</em>, <em>numtrials=5</em>, <em>parallel=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#CBMCSwap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.CBMCSwap" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">move_class.</code><code class="sig-name descname">CBMCSwap</code><span class="sig-paren">(</span><em class="sig-param">simulation</em>, <em class="sig-param">anchortype</em>, <em class="sig-param">type_lengths</em>, <em class="sig-param">starting_index=3</em>, <em class="sig-param">numtrials=5</em>, <em class="sig-param">parallel=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#CBMCSwap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.CBMCSwap" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="move_class.CBMCSwap.align_mol_to_positions">
-<code class="descname">align_mol_to_positions</code><span class="sig-paren">(</span><em>mol</em>, <em>positions</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#CBMCSwap.align_mol_to_positions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.CBMCSwap.align_mol_to_positions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">align_mol_to_positions</code><span class="sig-paren">(</span><em class="sig-param">mol</em>, <em class="sig-param">positions</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#CBMCSwap.align_mol_to_positions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.CBMCSwap.align_mol_to_positions" title="Permalink to this definition">¶</a></dt>
 <dd><p>swap_atom1_positions = np.copy(np.array([mol1.getAtomByMolIndex(i).position for i in range(0,index+1)]))
 swap_atom2_positions = np.copy(np.array([mol2.getAtomByMolIndex(i).position for i in range(0,index+1)]))
 anchor_distance = np.copy(mol1.getAtomByMolIndex(0).position - mol2.getAtomByMolIndex(0).position)</p>
@@ -290,7 +287,7 @@ mol2.move_atoms_by_index(move2,i)</p>
 
 <dl class="method">
 <dt id="move_class.CBMCSwap.select_random_molecules">
-<code class="descname">select_random_molecules</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#CBMCSwap.select_random_molecules"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.CBMCSwap.select_random_molecules" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">select_random_molecules</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#CBMCSwap.select_random_molecules"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.CBMCSwap.select_random_molecules" title="Permalink to this definition">¶</a></dt>
 <dd><p>Selects a random elegible molecule (one with an anchor atom set) from the molecules provided by the Simulation object that the CBMCRegrowth object was passed in at initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -306,7 +303,7 @@ mol2.move_atoms_by_index(move2,i)</p>
 
 <dl class="class">
 <dt id="move_class.Move">
-<em class="property">class </em><code class="descclassname">move_class.</code><code class="descname">Move</code><span class="sig-paren">(</span><em>simulation</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#Move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.Move" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">move_class.</code><code class="sig-name descname">Move</code><span class="sig-paren">(</span><em class="sig-param">simulation</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#Move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.Move" title="Permalink to this definition">¶</a></dt>
 <dd><p>A class used to encapsulate all MC moves that can be used by a simulation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -321,20 +318,20 @@ mol2.move_atoms_by_index(move2,i)</p>
 
 <dl class="class">
 <dt id="move_class.RotationMove">
-<em class="property">class </em><code class="descclassname">move_class.</code><code class="descname">RotationMove</code><span class="sig-paren">(</span><em>simulation</em>, <em>anchortype</em>, <em>max_angle</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#RotationMove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.RotationMove" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">move_class.</code><code class="sig-name descname">RotationMove</code><span class="sig-paren">(</span><em class="sig-param">simulation</em>, <em class="sig-param">anchortype</em>, <em class="sig-param">max_angle</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#RotationMove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.RotationMove" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="class">
 <dt id="move_class.SwapMove">
-<em class="property">class </em><code class="descclassname">move_class.</code><code class="descname">SwapMove</code><span class="sig-paren">(</span><em>simulation</em>, <em>anchortype</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#SwapMove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.SwapMove" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">move_class.</code><code class="sig-name descname">SwapMove</code><span class="sig-paren">(</span><em class="sig-param">simulation</em>, <em class="sig-param">anchortype</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#SwapMove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.SwapMove" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="class">
 <dt id="move_class.TranslationMove">
-<em class="property">class </em><code class="descclassname">move_class.</code><code class="descname">TranslationMove</code><span class="sig-paren">(</span><em>simulation</em>, <em>max_disp</em>, <em>stationary_types</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#TranslationMove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.TranslationMove" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">move_class.</code><code class="sig-name descname">TranslationMove</code><span class="sig-paren">(</span><em class="sig-param">simulation</em>, <em class="sig-param">max_disp</em>, <em class="sig-param">stationary_types</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#TranslationMove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.TranslationMove" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="move_class.TranslationMove.select_random_molecule">
-<code class="descname">select_random_molecule</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#TranslationMove.select_random_molecule"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.TranslationMove.select_random_molecule" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">select_random_molecule</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/move_class.html#TranslationMove.select_random_molecule"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#move_class.TranslationMove.select_random_molecule" title="Permalink to this definition">¶</a></dt>
 <dd><p>Selects a random elegible molecule (one with no atoms of the type specified by stationary_types) from the molecules provided by the Simulation object that the CBMCRegrowth object was passed in at initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>

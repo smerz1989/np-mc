@@ -55,9 +55,6 @@
           
 
           
-            
-            <img src="_static/logo.png" class="logo" alt="Logo"/>
-          
           </a>
 
           
@@ -158,7 +155,7 @@
 <p>This module contains the simulation class and associated functions which are meant to encapsulate a LAMMPS simulation.</p>
 <dl class="class">
 <dt id="simulation_class.Simulation">
-<em class="property">class </em><code class="descclassname">simulation_class.</code><code class="descname">Simulation</code><span class="sig-paren">(</span><em>init_file</em>, <em>datafile</em>, <em>dumpfile</em>, <em>temp</em>, <em>max_disp=1.0</em>, <em>type_lengths=(5</em>, <em>13)</em>, <em>numtrials=5</em>, <em>anchortype=2</em>, <em>restart=False</em>, <em>parallel=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">simulation_class.</code><code class="sig-name descname">Simulation</code><span class="sig-paren">(</span><em class="sig-param">init_file</em>, <em class="sig-param">datafile</em>, <em class="sig-param">dumpfile</em>, <em class="sig-param">temp</em>, <em class="sig-param">max_disp=1.0</em>, <em class="sig-param">type_lengths=(5</em>, <em class="sig-param">13)</em>, <em class="sig-param">numtrials=5</em>, <em class="sig-param">anchortype=2</em>, <em class="sig-param">restart=False</em>, <em class="sig-param">parallel=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class encapsulates a LAMMPS simulation including its associated molecules and computes and fixes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -175,19 +172,19 @@
 </dl>
 <dl class="method">
 <dt id="simulation_class.Simulation.assignAtomTypes">
-<code class="descname">assignAtomTypes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.assignAtomTypes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.assignAtomTypes" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">assignAtomTypes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.assignAtomTypes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.assignAtomTypes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assign element names to the atom types in the simulation.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="simulation_class.Simulation.dump_atoms">
-<code class="descname">dump_atoms</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.dump_atoms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.dump_atoms" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">dump_atoms</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.dump_atoms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.dump_atoms" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dump the atom XYZ info to the dumpfile specified in the Simulation’s dumpfile variable.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="simulation_class.Simulation.dump_group">
-<code class="descname">dump_group</code><span class="sig-paren">(</span><em>group_name</em>, <em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.dump_group"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.dump_group" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">dump_group</code><span class="sig-paren">(</span><em class="sig-param">group_name</em>, <em class="sig-param">filename</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.dump_group"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.dump_group" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dumps the atoms of the specified group to an XYZ file specified by filename</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -202,13 +199,13 @@ As the specified format is XYZ it is a good idea to append .xyz to the end of th
 
 <dl class="method">
 <dt id="simulation_class.Simulation.getRandomMolecule">
-<code class="descname">getRandomMolecule</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.getRandomMolecule"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.getRandomMolecule" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">getRandomMolecule</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.getRandomMolecule"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.getRandomMolecule" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a randomly selected molecule from the LAMMPS datafile associated with the given instance.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="simulation_class.Simulation.get_atom_coords">
-<code class="descname">get_atom_coords</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.get_atom_coords"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.get_atom_coords" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_atom_coords</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.get_atom_coords"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.get_atom_coords" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns positions of each atom in a Nx3 array</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -222,25 +219,25 @@ As the specified format is XYZ it is a good idea to append .xyz to the end of th
 
 <dl class="method">
 <dt id="simulation_class.Simulation.initializeComputes">
-<code class="descname">initializeComputes</code><span class="sig-paren">(</span><em>lmp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.initializeComputes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.initializeComputes" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">initializeComputes</code><span class="sig-paren">(</span><em class="sig-param">lmp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.initializeComputes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.initializeComputes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initializes the LAMMPS computes that one  wishes to use in the simulation.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="simulation_class.Simulation.initializeFixes">
-<code class="descname">initializeFixes</code><span class="sig-paren">(</span><em>lmp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.initializeFixes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.initializeFixes" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">initializeFixes</code><span class="sig-paren">(</span><em class="sig-param">lmp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.initializeFixes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.initializeFixes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initializes the fixes one wishes to use in the simulation.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="simulation_class.Simulation.initializeGroups">
-<code class="descname">initializeGroups</code><span class="sig-paren">(</span><em>lmp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.initializeGroups"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.initializeGroups" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">initializeGroups</code><span class="sig-paren">(</span><em class="sig-param">lmp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.initializeGroups"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.initializeGroups" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize the LAMMPS groups that one wishes to use in the simulation.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="simulation_class.Simulation.minimize">
-<code class="descname">minimize</code><span class="sig-paren">(</span><em>force_tol=0.001</em>, <em>e_tol=1e-05</em>, <em>max_iter=200</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.minimize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.minimize" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">minimize</code><span class="sig-paren">(</span><em class="sig-param">force_tol=0.001</em>, <em class="sig-param">e_tol=1e-05</em>, <em class="sig-param">max_iter=200</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.minimize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.minimize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Minimizes the system using LAMMPS minimize function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -255,7 +252,7 @@ As the specified format is XYZ it is a good idea to append .xyz to the end of th
 
 <dl class="method">
 <dt id="simulation_class.Simulation.turn_off_atoms">
-<code class="descname">turn_off_atoms</code><span class="sig-paren">(</span><em>atomIDs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.turn_off_atoms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.turn_off_atoms" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">turn_off_atoms</code><span class="sig-paren">(</span><em class="sig-param">atomIDs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simulation_class.html#Simulation.turn_off_atoms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simulation_class.Simulation.turn_off_atoms" title="Permalink to this definition">¶</a></dt>
 <dd><p>Turns off short range interactions with specified atoms using ‘neigh_modify exclude’ command in LAMMPS</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
