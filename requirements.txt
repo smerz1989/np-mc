@@ -7,7 +7,7 @@ lammps===20Jan2017
 matplotlib==2.0.2
 mock==2.0.0
 networkx==1.11
-numpy==1.13.1
+numpy==1.21.0
 pbr==3.1.1
 pkg-resources==0.0.0
 pyparsing==2.2.0
