@@ -19,7 +19,9 @@ class Simulation(object):
     datafile : str
         The LAMMPS data file which contains the coordinates of the atoms and bond, angle, and dihedral information.    
     dumpfile : str
-        The filename of the file which one wishes to dump the XYZ information of the simulation.   
+        The filename of the file which one wishes to dump the XYZ information of the simulation.
+    restartdatafile : str
+        The filename of the file which one wishes to generate restart data files containing a "snapshot" of the entire system.
     temp : float
         The temperature which one wishes to run the simulation.          
     type_lengths : list of type int
@@ -58,6 +60,7 @@ class Simulation(object):
         self.faces = mol.getNanoparticleFaces(np_atoms)
         self.atomlist = self.get_atoms()
         self.move_weights = moves
+        print(f'The Length of self.move_weights is: {len(self.move_weights)}')
         
         self.lmp = lammps("",["-echo","none","-screen","lammps.out"])
         self.lmp.file(os.path.abspath(init_file))
@@ -66,6 +69,7 @@ class Simulation(object):
         self.dumpfile = os.path.abspath(dumpfile)
         self.datafile = os.path.abspath(datafile)
         self.init_file = os.path.abspath(init_file)
+        
         self.init_styles_file = self.init_file + '.init'
         self.exclude=False
               
@@ -125,6 +129,7 @@ class Simulation(object):
         swap_move = mvc.CBMCSwap(self,anchortype,type_lengths,numtrials,read_pdf)
         jump_move = mvc.CBMCJump(self,anchortype,type_lengths,jump_dists,numtrials,read_pdf)
         self.moves = [cbmc_move,translate_move,swap_move,rotation_move,jump_move]
+        print(f'The length of self.moves is: {len(self.moves)}')
         if legacy: self.moves = [cbmc_move_legacy,translate_move_legacy,swap_move_legacy,rotation_move_legacy] 
         if restart:
             for i,move in enumerate(self.moves):
@@ -177,11 +182,18 @@ class Simulation(object):
             As the specified format is XYZ it is a good idea to append .xyz to the end of the filename.
         """
         self.lmp.command("write_dump "+group_name+" xyz "+filename)
+        
 
     def dump_atoms(self):
         """Dump the atom XYZ info to the dumpfile specified in the Simulation's dumpfile variable.
         """
         self.lmp.command("write_dump all xyz "+self.dumpfile+" modify append yes")
+    
+    def dump_restart(self,restartdatafile,):
+        '''Output restart files to the restart file specified in the SImulation's restartdatafile variable
+        '''
+        self.restartdatafile = restartdatafile
+        self.lmp.command("write_restart "+self.restartdatafile+"_*.restart")
 
     def getCoulPE(self):
         """Compute the Coulombic potential energy from LAMMPS.
