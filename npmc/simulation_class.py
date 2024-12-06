@@ -19,7 +19,9 @@ class Simulation(object):
     datafile : str
         The LAMMPS data file which contains the coordinates of the atoms and bond, angle, and dihedral information.    
     dumpfile : str
-        The filename of the file which one wishes to dump the XYZ information of the simulation.   
+        The filename of the file which one wishes to dump the XYZ information of the simulation.
+    restartdatafile : str
+        The filename of the file which one wishes to generate restart data files containing a "snapshot" of the entire system.
     temp : float
         The temperature which one wishes to run the simulation.          
     type_lengths : list of type int
@@ -40,8 +42,8 @@ class Simulation(object):
         A Boolean that determines whether branch point probability density functions (PDFs) are read from a .pkl file or are determined at the start of the simulation
         and then written to a .pkl file.
     """
-    def __init__(self,init_file,datafile,dumpfile,temp,type_lengths=(5,13),nptype=1,anchortype=5,max_disp=0.4,max_angle=0.1745,numtrials=5,numtrials_jump=20,moves=[1,10,1,10,1],
-            jump_dists=[0.93,1.95],seed=None,restart=False,cluster=False,read_pdf=False,legacy=False):
+    def __init__(self,init_file,datafile,dumpfile,temp,type_lengths=(13,15),nptype=1,anchortype=5,max_disp=0.4,max_angle=0.1745,numtrials=5,numtrials_jump=20,moves=[1,1,10,1,10,1],
+            jump_dists=[0.93,1.95], num_MD_steps = 10000, MD_timestep = 0.5, seed=None,restart=False,cluster=False,read_pdf=False,legacy=False):
                      
         rnd.seed(seed)
         np.random.seed(seed)
@@ -54,10 +56,14 @@ class Simulation(object):
         self.numtrials_jump = numtrials_jump
         self.temp = temp
         self.max_disp = max_disp
+        self.num_MD_steps = num_MD_steps
+        self.md_timestep = MD_timestep
         self.molecules,np_atoms = mol.constructMolecules(datafile,anchortype)
+        print('Length of molecules list: ', len(self.molecules))
         self.faces = mol.getNanoparticleFaces(np_atoms)
         self.atomlist = self.get_atoms()
         self.move_weights = moves
+        print(f'The Length of self.move_weights is: {len(self.move_weights)}')
         
         self.lmp = lammps("",["-echo","none","-screen","lammps.out"])
         self.lmp.file(os.path.abspath(init_file))
@@ -66,13 +72,14 @@ class Simulation(object):
         self.dumpfile = os.path.abspath(dumpfile)
         self.datafile = os.path.abspath(datafile)
         self.init_file = os.path.abspath(init_file)
+        
         self.init_styles_file = self.init_file + '.init'
         self.exclude=False
               
         self.initializeGroups(self.lmp)
         self.initializeComputes(self.lmp)
         self.initializeFixes(self.lmp)
-        self.initializeMoves(type_lengths,nptype,anchortype,max_disp,max_angle,jump_dists,numtrials,restart,cluster,read_pdf,legacy)
+        self.initializeMoves(type_lengths,nptype,anchortype,max_disp,max_angle,jump_dists,numtrials,num_MD_steps,restart,cluster,read_pdf,legacy)
         self.initialize_data_files(restart)
         self.step = 0 if not restart else self.get_last_step_number()
         self.update_neighbor_list()
@@ -83,7 +90,7 @@ class Simulation(object):
         """
         lmp.command("group silver type 1")
         lmp.command("group sulfur type 5")
-        lmp.command("group adsorbate type 2 3 4 5 6")
+        lmp.command("group adsorbate subtract all silver sulfur") #this now dynamically defines the adsorbate group rather than 2,3,4,6,7,8,9
         self.lmp.command("group empty empty")
 
     def initializeComputes(self,lmp):
@@ -112,7 +119,7 @@ class Simulation(object):
         """
         lmp.command("fix fxfrc silver setforce 0. 0. 0.")
     
-    def initializeMoves(self,type_lengths,nptype,anchortype,max_disp,max_angle,jump_dists,numtrials,restart,cluster,read_pdf,legacy):
+    def initializeMoves(self,type_lengths,nptype,anchortype,max_disp,max_angle,jump_dists,numtrials,num_MD_steps,restart,cluster,read_pdf,legacy):
         """Initializes the Monte Carlo moves used in the simulation.
         """
         translate_move_legacy = mvc.TranslationMove_Legacy(self,max_disp,[nptype])
@@ -121,10 +128,12 @@ class Simulation(object):
         swap_move_legacy = mvc.CBMCSwap_Legacy(self,anchortype,type_lengths,numtrials,read_pdf)
         translate_move = mvc.TranslationMove(self,max_disp,[nptype],cluster)
         rotation_move = mvc.RotationMove(self,anchortype,max_angle)
+        #md_move = mvc.MDmove(self, num_MD_steps, self.temp, self.md_timestep) #ZRL - hybrid MD MC for small simultaneous adjustments of the ligands
         cbmc_move = mvc.CBMCRegrowth(self,anchortype,type_lengths,numtrials,read_pdf)
         swap_move = mvc.CBMCSwap(self,anchortype,type_lengths,numtrials,read_pdf)
         jump_move = mvc.CBMCJump(self,anchortype,type_lengths,jump_dists,numtrials,read_pdf)
-        self.moves = [cbmc_move,translate_move,swap_move,rotation_move,jump_move]
+        self.moves = [cbmc_move,translate_move,swap_move,rotation_move,jump_move] #md_move, MDmove does not satisfy DB in current implementation
+        print(f'The length of self.moves is: {len(self.moves)}')
         if legacy: self.moves = [cbmc_move_legacy,translate_move_legacy,swap_move_legacy,rotation_move_legacy] 
         if restart:
             for i,move in enumerate(self.moves):
@@ -158,12 +167,14 @@ class Simulation(object):
         max_iter : int, optional
             The maximum allowed iterations in the minimization procedure.
         """
-        self.lmp.command("fix fxfrcS sulfur setforce 0. 0. 0.")
+        self.lmp.command("fix fxfrcS sulfur setforce 0.0 0.0 0.0")
+        self.lmp.command('fix staystill sulfur spring/self 30000.0') #ensures that the sulfurs maintain the position in the same coord as defined in surface_sites.xyz
         self.lmp.command('timestep 0.5')
         self.lmp.command(f'min_style {style}')
         self.lmp.command("minimize "+str(force_tol)+" "+str(e_tol)+" "+str(max_iter)+" "+str(max_iter*10))
         self.get_coords()
         self.lmp.command("unfix fxfrcS")
+        self.lmp.command('unfix staystill')
 
     def dump_group(self,group_name,filename):
         """Dumps the atoms of the specified group to an XYZ file specified by filename
@@ -177,11 +188,18 @@ class Simulation(object):
             As the specified format is XYZ it is a good idea to append .xyz to the end of the filename.
         """
         self.lmp.command("write_dump "+group_name+" xyz "+filename)
+        
 
     def dump_atoms(self):
         """Dump the atom XYZ info to the dumpfile specified in the Simulation's dumpfile variable.
         """
         self.lmp.command("write_dump all xyz "+self.dumpfile+" modify append yes")
+    
+    def dump_restart(self,restartdatafile,):
+        '''Output restart files to the restart file specified in the SImulation's restartdatafile variable
+        '''
+        self.restartdatafile = restartdatafile
+        self.lmp.command("write_restart "+self.restartdatafile+"_*.restart")
 
     def getCoulPE(self):
         """Compute the Coulombic potential energy from LAMMPS.
@@ -400,7 +418,7 @@ class Simulation(object):
         if np.isclose(running_deltaE,actual_totalPE,atol=1e-6):
             self.deltaE = self.get_total_PE()-self.initial_PE
 
-    def perform_mc_move(self):
+    def perform_mc_move(self, temp):
         """Randomly selects one of the Monte Carlo moves included in initializeMoves, performs it, and accepts or rejects the move according to the Metropolis criteria.
         
         Returns
@@ -410,7 +428,7 @@ class Simulation(object):
         """
         move = rnd.choices(self.moves,weights=self.move_weights)[0]
         old_positions = np.copy([atom.position for atom in self.atomlist])
-        accepted,energy = move.move()
+        accepted,energy = move.move(temp)
         if accepted:
             self.deltaE += energy
         else:  
